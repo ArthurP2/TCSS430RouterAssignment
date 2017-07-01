@@ -38,8 +38,19 @@ public class Router {
 
     public void getTable(){
         for(int i = 0; i < myDestinations.size(); i++){
-            System.out.println("Router:" + myDestinations.get(i).myIPAddress + " Hops:" + getHops(this, myDestinations.get(i)));
+            System.out.println("Router:" + myDestinations.get(i).myIPAddress + " Hops:" + getHops(this, myDestinations.get(i)) + " Port:");
         }
+    }
+
+    public void kill(){
+        for (int i = 0; i < myConnections.size(); i++){
+            for (int q = 0; q < myConnections.get(i).end.myConnections.size(); q++){
+                if (myConnections.get(i).end.myConnections.get(q).end.equals(this)) {
+                    myConnections.get(i).end.myConnections.remove(q);
+                }
+            }
+        }
+        myConnections.clear();
     }
 
     public int getHops(Router start, Router finish){
