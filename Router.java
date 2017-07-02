@@ -58,11 +58,16 @@ public class Router {
      * Returns the routing table.
      */
     public void getTable(){
-        System.out.println("======================================================================");
+        System.out.println("----------------------------------------------------------");
+        System.out.print("Table for router: " + myRouterID +"\n");
+        System.out.println("----------------------------------------------------------");
+        System.out.format("%2s%20s%7s%16s\n\n", "Destination", "Hops","Port", "Time");
         for(Map.Entry<String, Router> entry: myDestinations.entrySet()) {
-            System.out.println("Destination:  " + entry.getKey() + " Hops:" + getHops(this, entry.getValue()) + " Port:" + entry.getValue().myIpAddresses.get(entry.getKey())
-                    + " TimeStamp: " + entry.getValue().timeStamp);
+            String ip = entry.getKey();
+            int hops = getHops(this, entry.getValue());
+            int port = entry.getValue().myIpAddresses.get(entry.getKey());
             System.out.println("");
+            System.out.format("%2s%20s%7s%25s\n", ip, hops, port, entry.getValue().timeStamp);
         }
         }
 

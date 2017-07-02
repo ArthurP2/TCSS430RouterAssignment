@@ -1,9 +1,6 @@
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * This ist he main class.
@@ -41,17 +38,25 @@ public class main {
         lr.add(r5);
         lr.add(r6);
 
+        //Generates random Ip Address
+        List<String> randomIps = new ArrayList<>();
+        for (int i = 0; i < 10; i++){
+            String ii = randomIp();
+            randomIps.add(ii);
+        }
+
+
         //Puts IP Addresses to router ports
-        r0.myIpAddresses.put("153.213.42.2", 80);
-        r6.myIpAddresses.put("153.421.53.6", 40);
-        r6.myIpAddresses.put("153.621.21.8", 90);
-        r6.myIpAddresses.put("153.211.279.21", 90);
-        r3.myIpAddresses.put("151.351.51.2", 512);
-        r4.myIpAddresses.put("182.952.21.3", 21);
-        r2.myIpAddresses.put("152.233.25.5", 40);
-        r4.myIpAddresses.put("191.213.421.4", 180);
-        r4.myIpAddresses.put("125.21.34.12", 90);
-        r1.myIpAddresses.put("210.63.213.4", 50);
+        r0.myIpAddresses.put(randomIps.get(0), 80);
+        r6.myIpAddresses.put(randomIps.get(1), 40);
+        r6.myIpAddresses.put(randomIps.get(2), 90);
+        r6.myIpAddresses.put(randomIps.get(3), 90);
+        r4.myIpAddresses.put(randomIps.get(4), 21);
+        r4.myIpAddresses.put(randomIps.get(5), 180);
+        r4.myIpAddresses.put(randomIps.get(6), 90);
+        r3.myIpAddresses.put(randomIps.get(7), 512);
+        r2.myIpAddresses.put(randomIps.get(8), 40);
+        r1.myIpAddresses.put(randomIps.get(9), 50);
 
 
         //Creates a network graph from the routers.
@@ -61,16 +66,16 @@ public class main {
 
         //Creates a table of destinations for router 1.
         //Router 1 will be the router with the visible table.
-        r0.myDestinations.put("153.213.42.2", r0);
-        r0.myDestinations.put("153.421.53.6", r6);
-        r0.myDestinations.put("153.621.21.8", r6);
-        r0.myDestinations.put("153.211.279.21", r6);
-        r0.myDestinations.put("182.952.21.3", r4);
-        r0.myDestinations.put("151.351.51.2", r3);
-        r0.myDestinations.put("152.233.25.5", r2);
-        r0.myDestinations.put("191.213.421.4", r4);
-        r0.myDestinations.put("125.21.34.12", r4);
-        r0.myDestinations.put("210.63.213.4", r1);
+        r0.myDestinations.put(randomIps.get(0), r0);
+        r0.myDestinations.put(randomIps.get(1), r6);
+        r0.myDestinations.put(randomIps.get(2), r6);
+        r0.myDestinations.put(randomIps.get(3), r6);
+        r0.myDestinations.put(randomIps.get(4), r4);
+        r0.myDestinations.put(randomIps.get(5), r4);
+        r0.myDestinations.put(randomIps.get(6), r4);
+        r0.myDestinations.put(randomIps.get(7), r3);
+        r0.myDestinations.put(randomIps.get(8), r2);
+        r0.myDestinations.put(randomIps.get(9), r1);
        // r0.myDestinations.add(r6);
         r0.getTable();
 
@@ -100,6 +105,11 @@ public class main {
 
 
     }
+
+    public static String randomIp(){
+               Random r = new Random();
+               return r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256) + "." + r.nextInt(256);
+           }
 
 
 
