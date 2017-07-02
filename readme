@@ -1,0 +1,22 @@
+TCSS430 Router Program
+
+Group 1:
+Christian Boettcher
+Arthur Panlilio
+Tim Weaver
+
+
+This program emulates the router network.
+
+The Network contains a list of all the routers. Each router has ports that connect to a specific IP
+Address. Each router can also connect to another router and stores this information locally in the
+Router class.
+
+Each router has a router table, but only the first router will have its table shown. Each table holds
+10 destination IP addresses. The router can calculate how many hops to other routers it would need to reach
+its destination. This does that by doing a breadth-first-search on the network graph.
+
+The user can disconnect a specific router from all other routers in the network. They do this by typing "kill.(router number)",
+where the router number would be the number displayed on the router in the GUI. Typing in kill.3 would disconnect
+router 3 from all other routers. Typing in connect.1.2 would connect router 1 and 2 together. Both commands update the table
+and update the timestamp.

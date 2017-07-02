@@ -1,5 +1,5 @@
 /**
- * edge
+ * connection
  */
 public class Connection {
     public Router start;
