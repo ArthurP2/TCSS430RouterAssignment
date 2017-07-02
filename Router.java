@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -13,12 +14,14 @@ public class Router {
     public String myIPAddress;
     public List<Connection> myConnections;
     public List<Router> myDestinations;
+    public String timeStamp;
 
 
     public Router(String theIPAddress){
         myIPAddress = theIPAddress;
         myConnections = new ArrayList<>();
         myDestinations = new ArrayList<>();
+
     }
 
     public void addConnection(Router theOther){
@@ -26,6 +29,7 @@ public class Router {
         myConnections.add(newConnection);
         Connection newConnection2 = new Connection(theOther, this);
         theOther.myConnections.add(newConnection2);
+        timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
     }
 
     public List<Router> getConnections(){
@@ -37,9 +41,16 @@ public class Router {
     }
 
     public void getTable(){
+        System.out.println("----------------------------------------------------------");
+        System.out.print("Table for router: " + myDestinations.get(0).myIPAddress +"\n");
+        System.out.println("----------------------------------------------------------");
+        System.out.format("%22s%10s%26s\n\n", "destination", "hops", "time");
         for(int i = 0; i < myDestinations.size(); i++){
-            System.out.println("Router:" + myDestinations.get(i).myIPAddress + " Hops:" + getHops(this, myDestinations.get(i)) + " Port:");
+            String ip = myDestinations.get(i).myIPAddress;
+            String hops = Integer.toString(getHops(this, myDestinations.get(i)));
+            System.out.format("%22s%10s%26s\n", ip, hops, timeStamp);
         }
+        System.out.println("----------------------------------------------------------");
     }
 
     public void kill(){
@@ -84,6 +95,4 @@ public class Router {
         }
         return x;
     }
-
-
 }
