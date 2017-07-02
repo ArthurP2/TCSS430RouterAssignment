@@ -7,13 +7,13 @@ public class main {
     public static void main(String[] args) {
 
         List<Router> lr = new ArrayList<>();
-        Router r0 = new Router(randomIp());
-        Router r1 = new Router(randomIp());
-        Router r2 = new Router(randomIp());
-        Router r3 = new Router(randomIp());
-        Router r4 = new Router(randomIp());
-        Router r5 = new Router(randomIp());
-        Router r6 = new Router(randomIp());
+        Router r0 = new Router(randomIp() + "  (1)");
+        Router r1 = new Router(randomIp() + "  (2)");
+        Router r2 = new Router(randomIp() + "  (3)");
+        Router r3 = new Router(randomIp() + "  (4)");
+        Router r4 = new Router(randomIp() + "  (5)");
+        Router r5 = new Router(randomIp() + "  (6)");
+        Router r6 = new Router(randomIp() + "  (7)");
         r0.addConnection(r1);
         r1.addConnection(r2);
         r2.addConnection(r3);
