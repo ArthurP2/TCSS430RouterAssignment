@@ -41,16 +41,16 @@ public class Router {
     }
 
     public void getTable(){
-        System.out.println("----------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
         System.out.print("Table for router: " + myDestinations.get(0).myIPAddress +"\n");
-        System.out.println("----------------------------------------------------------");
-        System.out.format("%22s%10s%26s\n\n", "destination", "hops", "time");
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.format("%22s%10s%13s%30s\n\n", "destination", "hops", "port", "timestamp");
         for(int i = 0; i < myDestinations.size(); i++){
             String ip = myDestinations.get(i).myIPAddress;
             String hops = Integer.toString(getHops(this, myDestinations.get(i)));
-            System.out.format("%22s%10s%26s\n", ip, hops, timeStamp);
+            System.out.format("%22s%10s%13s%30s\n", ip, hops, " ", timeStamp);
         }
-        System.out.println("----------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
     }
 
     public void kill(){
